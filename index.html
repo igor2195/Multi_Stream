@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Twitch player</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="styles/generalStyle.css">
+        <link rel="stylesheet" href="styles/popupStyle.css">
+        <script src="scripts/jquery-3.4.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="scripts/generalFunctions.js"></script>
+        <script src="scripts/popup.js"></script>             
+    </head>
+    <body>
+        <div class="left-content">
+            <div class="wrapper">
+                <!-- <div id="searchingSection">        
+                    <input autofocus type="text" id="searchTextBox" placeholder="Channel name">
+                    <img id='loadingStreamsListImg' class='hide' src="images/6.gif"></img>
+                    <h3 id='userName' class="floatRight"><ins></ins></h3>
+                </div> -->
+                
+                <div id='menu'>
+                    <ul>
+                        <li><a class="active" id="games" href=#>games</a></li>
+                        <li><a id="popular" href=#>popular</a></li>
+                        <li><a href=# id="following">following</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div id="gamesSection" class='mainSection'>
+                <img id='loadingGamesImg' class='loadingMainImg' src="images/6.gif"></img>
+            </div>
+            <div class="mainContentSection" id="gameStreamsSection">
+                <div id="gameInfoContainer">
+                    <input type="image" id="backBtn" src="images/arrow.png"/>
+                    <img id="smallGameIcon" src="#"></img>
+                    <div id="gameName"></div>
+                </div>
+                <div id="streamsList">
+                    <img class='loadingMainImg' id='loadingStreamsImg' src="images/6.gif"></img>
+                </div>
+            </div>
+            <div class="mainContentSection" id="popularStreamsSection">
+                <div class='streamsMainList' id="popularStreamsList">
+                    <img id='loadingPopularStreamsImg' class='loadingMainImg' src="images/6.gif"></img>
+                </div>
+            </div>
+            <div class="mainContentSection" id="followingStreamsSection">
+                <input class="username" type="text" value="Igorexa818"/>
+                <div class='streamsMainList' id="followingStreamsList">
+                    <img id='loadingFollowingStreamsImg' class='loadingMainImg' src="images/6.gif"></img>
+                    <p class='hide' id="notValidUserNameMessage">You have not set user name, or your user name is wrong. You can set you user name in the 
+                        <a id='optionsPageLink' href='#'>options</a>
+                        page.</p>
+                </div>
+            </div>
+            <div class="mainContentSection" id="StreamWatch">
+                    <!-- <iframe src="https://player.twitch.tv/?channel=mdldisney" frameborder="0" height="300" width="550" ></iframe>
+                    <iframe src="https://player.twitch.tv/?channel=dota2ruhub" frameborder="0" height="300" width="550"></iframe>
+                    <iframe src="https://player.twitch.tv/?channel=admiralbulldog" frameborder="0" height="300" width="550"></iframe> -->
+                </div>
+        </div>
+        <div class="right-content" id="right-content">
+            <input type="button" id="startWatch" value="StartWatch"/>
+            <ul class="ListSream">
+
+            </ul>
+        </div>   
+    </body>
+</html>

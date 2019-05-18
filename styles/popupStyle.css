@@ -1,0 +1,325 @@
+body{
+    background-color: #E8E1F9;
+    font-family: 'Times New Roman', Times, Arial,sans-serif;
+    min-width: 650px; 
+    color: #fcfdff;
+    display: flex
+    
+   
+}
+.left-content{
+    border: 2px solid red;
+    width: 70%;
+}
+
+.right-content{
+    border: 2px solid red;
+    width: 30%;
+}
+
+
+
+.wrapper{
+    width: 100%;
+    /* height: 53px; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 2px solid #4b367c;
+    border-radius: 10px; */
+}
+
+input[type="text"]{
+    vertical-align: top;
+    height: 15px;
+    width: 45%;
+    outline-color: #4b367c;
+}
+
+.floatRight {
+    float: right;
+}
+
+#userName {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    max-width: 45%;
+}
+
+#searchingSection {
+    width: 100%;
+    height: 20px;
+}
+
+#loadingStreamsListImg{
+    height: 18px;
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 43%;
+} 
+
+.ui-menu-item {
+    width: 100%;
+}
+
+.mainSection {
+    /* width: 100%;
+    height: 83%; */
+    width: 100%;
+    height: 83%;
+    /* overflow-x: auto;  */
+}
+
+.game {
+    margin-top: 2%;
+    margin-left: 2%;
+    float: left;  
+}
+
+.game img {
+    max-width: 100%; 
+    border: 2px solid #4b367c;
+    border-radius: 15px;
+}
+
+.loadingMainImg {
+    width: 40px;
+    display: none;
+    padding: 42% 44%;
+    position: relative;
+}
+
+#loadingStreamsImg {
+    padding: 36% 45%;
+}
+
+.mainContentSection{
+    width: 100%;
+    height: 84%;
+    display: none;
+
+    /* background: #ebedef;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column; */
+
+}
+
+#backBtn{
+    float: left;
+    width: 24px;
+    height: 24px;
+}
+
+hr {
+    width: 100%;
+}
+
+#smallGameIcon{
+    float: left;
+    height: 100%;
+}
+
+#gameInfoContainer{    
+    max-width: 100%;
+    height: 40px;
+    margin-right: 15px;
+}
+
+#gameName{    
+    float: left;
+    margin-left: 4px;
+    max-width: 80%;
+    font-weight: bold;
+    text-align: right;
+    color: #4b367c;
+}
+
+#streamsList {
+    /* overflow-y: auto; 
+    overflow-x: hidden;
+    width: 100%;
+    height: 88%; */
+
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    justify-content: space-around;
+}
+
+.gameInList {
+    /* width: 98%; */
+    /* height: 100px; */
+    /* margin-top: 1%; */
+    /* margin-left: 1%; */
+    /* float: left; */
+    /* margin-bottom: 4px; */
+    /* border-bottom: 1px solid #4b367c; */
+    display: flex;
+    flex-direction: column;
+    /* transition: all 125ms ease-in-out; */
+    padding: 8px;
+    overflow: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 256px;
+    background-color: #2c3135;
+    margin: 10px;
+    border-radius: 15px;
+    border: 2px solid #4b367c;
+}
+
+.gameInList .streamTitle {
+    overflow: hidden;
+    height: 45%;
+    padding-left: 5px;
+}
+
+.gameInList .streamInfo {
+    overflow: hidden;
+    height: 55%;
+    padding-left: 5px;
+}
+
+.gameInList .streamInfo b{
+    color: #4b367c;    
+    display: inline;
+    overflow: hidden;
+    font-size: 1em;
+}
+
+.streamImage{
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.streamPreview{
+    /* float: left;
+    width: 320px;
+    height: 180px; */
+
+    /* height: 144px; */
+    /* color: #0856f1; */
+    /* opacity: 0; */
+    /* transition: all 125ms ease-in-out; */
+    /* animation: reveal 225ms ease-in-out 50ms forwards; */
+    /* flex-grow: 0; */
+    /* flex-shrink: 0; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+
+}
+
+.streamPreview img{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    /* border: 2px solid #4b367c; */
+    /* border-radius: 15px; */
+    /* margin: 2px; */
+}
+
+.streamImage img{
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid #4b367c;
+    border-radius: 15px;
+}
+
+.mainStreamInfo {
+    width: 84%;
+    max-width: 84%;   
+    overflow: hidden;
+    float: left;
+    white-space:nowrap;
+}
+
+.overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(180deg,transparent 0,rgba(0,0,0,.65));
+}
+
+.viewers {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    color: #fcfdff;
+    z-index: 3;
+    padding-right: 5px;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    /* height: 7%;
+    border: 1px solid hsla(0,0%,100%,.15);
+    border-radius: 2px; */
+    
+}
+
+ul {    
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4b367c;
+    border-radius: 25px;
+}
+
+li {
+    float: left;
+
+}
+
+li a {
+    display: block;
+    color: #E8E1F9;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0px 4px 2px 4px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #372368;
+    border-radius: 15px;
+}
+
+.active {
+    background-color: #2B1B50;
+    border-radius: 15px;
+}
+
+.streamsMainList {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    justify-content: space-around;
+}
+
+#notValidUserNameMessage {
+    color: red;
+    text-align: center;
+}
