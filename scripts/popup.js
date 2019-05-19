@@ -234,7 +234,7 @@ $(document).ready(function(){
 
     //Шаблон для плеера 
     function watchStream(streamURL){
-        $('#StreamWatch').append("<iframe src=" + streamURL +" frameborder='0' height='300' width='550'></iframe>")
+        $('#StreamWatch').append("<iframe class='playerStream' src=" + streamURL +" frameborder='0' height='300' width='550'></iframe>")
     }
 
     //добоавление игры в секшен
