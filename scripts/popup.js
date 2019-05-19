@@ -34,24 +34,24 @@ var menuContainerDictionary = {
     // }
 };
 
-
+function showConteiner(name){
+    for(var propName in menuContainerDictionary){
+        if(name == propName){
+            $(menuContainerDictionary[propName].containerToHide).hide();
+            $(menuContainerDictionary[propName].containerToShow).show();
+            $(menuContainerDictionary[propName].menu).addClass('active');
+        } else {
+            $(menuContainerDictionary[propName].containerToHide).hide();
+            $(menuContainerDictionary[propName].menu).removeClass('active');
+        }
+    }
+};
 
 
 //========================================================MAIN====================================================================================
 $(document).ready(function(){
 
-    function showConteiner(name){
-        for(var propName in menuContainerDictionary){
-            if(name == propName){
-                $(menuContainerDictionary[propName].containerToHide).hide();
-                $(menuContainerDictionary[propName].containerToShow).show();
-                $(menuContainerDictionary[propName].menu).addClass('active');
-            } else {
-                $(menuContainerDictionary[propName].containerToHide).hide();
-                $(menuContainerDictionary[propName].menu).removeClass('active');
-            }
-        }
-    };
+    
 
     //loading most popular games загрузка популярных игр
     $('#gamesSection').html(function(){
