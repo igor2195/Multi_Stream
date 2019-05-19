@@ -23,15 +23,6 @@ function removeElementsInList(selectorElementsToRemove){
 
 function addStreamToStreamsList(logoUrl, preview, status, channelName, viewers, gameName, sectionSelector){
     $(sectionSelector).append($(
-        // "<div class='gameInList'>" + 
-        //     // "<div class='streamImage'><img src=" + logoUrl + "></img></div>" +
-        //     "<div class='streamPreview'><img src=" + preview + "></img></div>" +
-        //     "<duv class='streamTextInfo'>" +
-        //     "<div class='streamTitle'>" + status + "</div>" +
-        //     "<div class='streamInfo'><div class='mainStreamInfo'><b>" + channelName + "</b>" + "<label> playing </label><b>" + gameName + "</b></div>" + 
-        //     "<div class='viewers' class='floatRight'><label>" + viewers + "<i class='far fa-eye'></i></label></div></div>" +                
-        //     "</div>" +
-        // "</div>"
         `<div class='gameInList'> 
             <div class='streamPreview'><img src="${preview}"></img>
             <div class="overlay">
@@ -39,8 +30,8 @@ function addStreamToStreamsList(logoUrl, preview, status, channelName, viewers, 
             </div>
             </div>
             <div class='streamTextInfo'>
-            <div class='streamTitle'>${status}</div>
-            <div class='streamInfo'><div class='mainStreamInfo'><b>${channelName}</b><label> playing </label><b>${gameName}</b></div> 
+            <div class='streamTitle'><span>${status}</span></div>
+            <div class='streamInfo'><div class='mainStreamInfo'><span><b>${channelName}</b></span><span><b>${gameName}</b></span></div> 
             </div>
         </div>`
     ));

@@ -5,6 +5,7 @@ var topStreamsListUr = "https://api.twitch.tv/kraken/streams";
 var StreamChannelList = [];
 var dataStreams;
 
+
 var clientId = "w3fm9hnnceiod76zcsfbje4hy4mfxn";
 var acceptHeader = "application/vnd.twitchtv.v5+json";
 
@@ -19,18 +20,18 @@ var menuContainerDictionary = {
     games: {
         menu: '#games',
         containerToShow: '#gamesSection',
-        containerToHide: '#gamesSection, #gameStreamsSection,#StreamWatch,#popularStreamsSection'
+        containerToHide: '#gamesSection, #gameStreamsSection,#StreamWatch,#popularStreamsSection, #right-content'
     },
     popular: {
         menu: '#popular',
         containerToShow: '#popularStreamsSection',
-        containerToHide: '#gameStreamsSection'
-    },
-    following: {
-        menu: '#following',
-        containerToShow: '#followingStreamsSection',
-        containerToHide: '#followingStreamsSection'
+        containerToHide: '#gameStreamsSection, #right-content'
     }
+    // following: {
+    //     menu: '#following',
+    //     containerToShow: '#followingStreamsSection',
+    //     containerToHide: '#followingStreamsSection'
+    // }
 };
 
 
@@ -39,8 +40,20 @@ var menuContainerDictionary = {
 //========================================================MAIN====================================================================================
 $(document).ready(function(){
 
-    
-    //loading most popular games отображение популярных игр
+    function showConteiner(name){
+        for(var propName in menuContainerDictionary){
+            if(name == propName){
+                $(menuContainerDictionary[propName].containerToHide).hide();
+                $(menuContainerDictionary[propName].containerToShow).show();
+                $(menuContainerDictionary[propName].menu).addClass('active');
+            } else {
+                $(menuContainerDictionary[propName].containerToHide).hide();
+                $(menuContainerDictionary[propName].menu).removeClass('active');
+            }
+        }
+    };
+
+    //loading most popular games загрузка популярных игр
     $('#gamesSection').html(function(){
         $.ajax({
             url: topGamesListUrl,
@@ -67,30 +80,7 @@ $(document).ready(function(){
         });  
     });
 
-
-
-
-
-
-    $('#popular').click(function(){
-        showConteiner('popular');
-        // removeElementsInList('#popularStreamsList .gameInList');
-        // removeElementsInList('.mainContentSection');
-        removeElementsInList('iframe');
-        showMostPopularStreams('#popularStreamsList');
-    });
-
-    $('#games').click(function(){
-        removeElementsInList('iframe');
-        showConteiner('games');
-    });
-
-    $('#following').click(function(){
-        showConteiner('following');
-        removeElementsInList('#followingStreamsList .gameInList');
-        showFollowingStreams('#followingStreamsList');
-    });
-    //популярные стримы 
+    //загрузка популярныч стримов 
     function showMostPopularStreams(containerSelector){
         showStreamsAjaxRequest = $.ajax({
             url: topStreamsListUr,
@@ -101,7 +91,6 @@ $(document).ready(function(){
                 "client-id": clientId                    
             },
             data: {
-                // "broadcaster_language": language,
                 "limit": defaultLimitOfStreamsInStreamsList                  
             },
             beforeSend: function(){                
@@ -118,108 +107,6 @@ $(document).ready(function(){
             }
         });
     }
-
-    function showConteiner(name){
-        for(var propName in menuContainerDictionary){
-            if(name == propName){
-                $(menuContainerDictionary[propName].containerToHide).hide();
-                $(menuContainerDictionary[propName].containerToShow).show();
-                $(menuContainerDictionary[propName].menu).addClass('active');
-            } else {
-                $(menuContainerDictionary[propName].containerToHide).hide();
-                $(menuContainerDictionary[propName].menu).removeClass('active');
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-    //open streams section by clicking on the game image переход на экран всех стимов выбраной игры
-    $("#gamesSection").on('click','div img',function(event){
-        var gameName = $(this).attr('alt');
-        var gameImgUrl = $(this).attr('src');
-
-        $('#gamesSection').hide();
-        $('#gameStreamsSection').show();
-
-        $('#smallGameIcon').attr('src', gameImgUrl);
-        $('#gameName').text(gameName);
-        
-        //settig default font-size
-        $('#gameName').css('font-size', defaultFontSizeForGameName);
-        // resizeFontForContainer('#gameInfoContainer', '#gameName');
-        removeElementsInList('#streamsList .gameInList');
-        showStreamsForGame(gameName, '#streamsList');
-    });
-    
-    //click back button
-    $('#backBtn').click(function(){
-        //clearing results of previous showing streams list
-        showStreamsAjaxRequest.abort();
-        removeElementsInList('#streamsList .gameInList');
-        
-        $('#gameStreamsSection').hide();
-        $('#gamesSection').show();        
-    });
-
-    //open twitch player for chanel открытие стрима 
-    // $('#streamsList, #popularStreamsList, #followingStreamsList').on('click', '.streamTextInfo', function(event){
-    //     var chanelName = $('b:first',this).text();
-    //     var url = twitchPlayerUrl + chanelName;
-        
-    //     createNewWindow(url, defaultTwitchPlayerWindowWidth, defaultTwitchPlayerWindowHeight);
-    //     close(); 
-    // }); 
-
-    $('#streamsList, #popularStreamsList, #followingStreamsList').on('click', '.streamPreview', function(event){
-        var channelName = $('b:first',$(this).parent()).text();
-        var src;
-        var url = twitchPlayerUrl + channelName;
-
-        dataStreams.streams.map(stream => {  
-            if (stream.channel.name === channelName) { 
-                src = stream.channel.logo; 
-            } 
-        });
-        
-        while(StreamChannelList.includes(url) === false){
-            StreamChannelList.push(url);
-            $('.ListSream').append(`<li><img src="${src}"></li>`);
-        };
-        console.log(StreamChannelList);
-               
-    }); 
-
-
-    //просмотрт стримов
-    $('#startWatch').click(function(){
-        //clearing results of previous showing streams list
-        // showStreamsAjaxRequest.abort();
-        removeElementsInList('.gameInList');
-        
-        $('#gameStreamsSection').hide();
-        $('#popularStreamsSection').hide();
-        $('#right-content').hide();
-        $('.left-content').width('100%');
-        $('#StreamWatch').show();
-        StreamChannelList.forEach((url) => {
-            watchStream(url);
-        });
-
-    });
-
-    //Шаблон для плеера 
-    function watchStream(streamURL){
-        $('#StreamWatch').append("<iframe src=" + streamURL +" frameborder='0' height='300' width='550'></iframe>")
-    }
-    
-
-    //=====================================================================ADDITIONAL FUNCTIONS========================
 
     //загрузка всех стримов выбраной игры
     function showStreamsForGame(gameName, containerSelector){
@@ -249,6 +136,105 @@ $(document).ready(function(){
                 } ,this);
             }
         });
+    }
+
+    
+
+    $('#popular').click(function(){
+        showConteiner('popular');
+        showMostPopularStreams('#popularStreamsList');
+        removeElementsInList('iframe');
+        removeElementsInList('.right-content .ListSreamElement div')
+        StreamChannelList.length = 0;
+        $('.left-content').width('100%');
+        // $('#right-content').hide();
+        // $('#startWatch').hide();
+    });
+
+    $('#games').click(function(){
+        showConteiner('games');
+        removeElementsInList('iframe');
+        removeElementsInList('.right-content .ListSreamElement div')
+        StreamChannelList.length = 0;
+        // $('#right-content').hide();
+        $('.left-content').width('100%');
+        // $('#startWatch').hide();
+    });
+
+    // $('#following').click(function(){
+    //     showConteiner('following');
+    //     removeElementsInList('#followingStreamsList .gameInList');
+    //     showFollowingStreams('#followingStreamsList');
+    // });
+    
+
+    // переход на экран всех стимов выбраной игры по клику на изображение
+    $("#gamesSection").on('click','div img',function(event){
+        var gameName = $(this).attr('alt');
+        var gameImgUrl = $(this).attr('src');
+
+        $('#gamesSection').hide();
+        $('#gameStreamsSection').show();
+
+        $('#smallGameIcon').attr('src', gameImgUrl);
+        $('#gameName').text(gameName);
+
+        removeElementsInList('#streamsList .gameInList');
+        showStreamsForGame(gameName, '#streamsList');
+    });
+    
+    //Кнопка возврата
+    $('#backBtn').click(function(){
+        showStreamsAjaxRequest.abort();
+        removeElementsInList('#streamsList .gameInList');
+        $('#gameStreamsSection').hide();
+        $('#gamesSection').show();        
+    });
+
+    //добавление трансляции в список 
+    $('#streamsList, #popularStreamsList, #followingStreamsList').on('click', '.streamPreview', function(event){
+        $('.left-content').width('75%');
+        $('.right-content').show();
+        var channelName = $('b:first',$(this).parent()).text();
+        var nameGame;
+        var src;
+        var url = twitchPlayerUrl + channelName;
+        
+        dataStreams.streams.map(stream => {  
+            if (stream.channel.name === channelName) { 
+                src = stream.channel.logo; 
+                nameGame = stream.game;
+            } 
+        });
+        while(StreamChannelList.includes(url) === false){
+            StreamChannelList.push(url);
+            $('.ListSreamElement').append(`<div class="StreamListElement"><img src="${src}"><div><div>${channelName}</div><div>${nameGame}</div></div></div>`);
+        };
+        console.log(StreamChannelList);
+               
+    }); 
+
+
+    //просмотрт стримов
+    $('#startWatch').click(function(){
+        removeElementsInList('.gameInList');
+        
+        $('#gameStreamsSection').hide();
+        $('#popularStreamsSection').hide();
+        $('#right-content').hide();
+        $('.left-content').width('100%');
+        $('#StreamWatch').show();
+        StreamChannelList.forEach((url) => {
+            watchStream(url);
+        });
+
+    });
+
+    //=====================================================================ADDITIONAL FUNCTIONS========================
+
+    //Шаблон для плеера 
+    function watchStream(streamURL){
+        $('#StreamWatch').append("<iframe src=" + streamURL +" frameborder='0' height='300' width='550'></iframe>")
     }
 
     //добоавление игры в секшен

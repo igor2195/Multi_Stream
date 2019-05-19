@@ -4,7 +4,6 @@
         <title>Twitch player</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="styles/generalStyle.css">
         <link rel="stylesheet" href="styles/popupStyle.css">
         <script src="scripts/jquery-3.4.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -13,7 +12,7 @@
     </head>
     <body>
         <div class="left-content">
-            <div class="wrapper">
+            <div class="header">
                 <!-- <div id="searchingSection">        
                     <input autofocus type="text" id="searchTextBox" placeholder="Channel name">
                     <img id='loadingStreamsListImg' class='hide' src="images/6.gif"></img>
@@ -22,9 +21,9 @@
                 
                 <div id='menu'>
                     <ul>
-                        <li><a class="active" id="games" href=#>games</a></li>
-                        <li><a id="popular" href=#>popular</a></li>
-                        <li><a href=# id="following">following</a></li>
+                        <li><a class="active" id="games" href=#>Категории</a></li>
+                        <li><a id="popular" href=#>Популярное</a></li>
+                        <!-- <li><a href=# id="following">following</a></li> -->
                     </ul>
                 </div>
                 
@@ -47,7 +46,7 @@
                     <img id='loadingPopularStreamsImg' class='loadingMainImg' src="images/6.gif"></img>
                 </div>
             </div>
-            <div class="mainContentSection" id="followingStreamsSection">
+            <!-- <div class="mainContentSection" id="followingStreamsSection">
                 <input class="username" type="text" value="Igorexa818"/>
                 <div class='streamsMainList' id="followingStreamsList">
                     <img id='loadingFollowingStreamsImg' class='loadingMainImg' src="images/6.gif"></img>
@@ -55,7 +54,7 @@
                         <a id='optionsPageLink' href='#'>options</a>
                         page.</p>
                 </div>
-            </div>
+            </div> -->
             <div class="mainContentSection" id="StreamWatch">
                     <!-- <iframe src="https://player.twitch.tv/?channel=mdldisney" frameborder="0" height="300" width="550" ></iframe>
                     <iframe src="https://player.twitch.tv/?channel=dota2ruhub" frameborder="0" height="300" width="550"></iframe>
@@ -63,10 +62,15 @@
                 </div>
         </div>
         <div class="right-content" id="right-content">
-            <input type="button" id="startWatch" value="StartWatch"/>
-            <ul class="ListSream">
+            <div class="menu-stream-list">
+                <span>Выбранные трансляции</span>
+                <input type="button" id="startWatch" value="Начать просмотр"/>
+                <div class="ListSreamElement">
+                    
+                </div>
 
-            </ul>
+            
+            </div>
         </div>   
     </body>
 </html>

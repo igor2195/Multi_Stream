@@ -7,27 +7,32 @@ body{
     
    
 }
-.left-content{
+/* .left-content{
     border: 2px solid red;
-    width: 70%;
-}
+    width: 75%;
+}*/
 
 .right-content{
-    border: 2px solid red;
-    width: 30%;
+    display: none;
+    width: 25%;
+
 }
 
-.ListSream{
+.ListSreamElement{
+    /* flex-direction: column; */
+    /* justify-content: unset; */
+    /* padding: 28px; */
+    /* box-sizing: border-box; */
+    /* display: flex;
     flex-direction: column;
-    justify-content: unset;
-    padding: 28px;
+    align-items: center; */
+    padding: 17px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 
-
-
-.wrapper{
+.header{
     width: 100%;
     /* height: 53px; */
     margin-left: auto;
@@ -91,6 +96,7 @@ input[type="text"]{
     max-width: 100%; 
     border: 2px solid #4b367c;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .loadingMainImg {
@@ -184,23 +190,51 @@ hr {
     border: 2px solid #4b367c;
 }
 
-.gameInList .streamTitle {
+.streamTitle span{
     overflow: hidden;
-    height: 45%;
-    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.streamTitle span:hover{
+    white-space: normal;
+    overflow: auto;
+}
+
+.gameInList .streamTitle {
+    /* height: 24px; */
+    line-height: 24px;
+    /* flex: 1; */
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* align-items: center; */
+    /* width: 100%; */
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
 }
 
 .gameInList .streamInfo {
-    overflow: hidden;
+    /* overflow: hidden;
     height: 55%;
     padding-left: 5px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 24px;
+    line-height: 24px;
+    justify-content: space-between; */
 }
 
-.gameInList .streamInfo b{
-    color: #4b367c;    
+.gameInList .streamInfo .mainStreamInfo span{
+    /* color: #4b367c;     */
+    /* color: #ff0202;
     display: inline;
     overflow: hidden;
-    font-size: 1em;
+    font-size: 1em; */
+    color: #b392ff;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .streamImage{
@@ -247,11 +281,18 @@ hr {
 }
 
 .mainStreamInfo {
-    width: 84%;
-    max-width: 84%;   
+    /* width: 84%;
+    max-width: 84%;
     overflow: hidden;
     float: left;
-    white-space:nowrap;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    line-height: 24px;
+    justify-content: space-between;
 }
 
 .overlay{
@@ -263,6 +304,7 @@ hr {
     height: 100%;
     top: 0;
     background: linear-gradient(180deg,transparent 0,rgba(0,0,0,.65));
+    cursor: pointer;
 }
 
 .viewers {
@@ -292,7 +334,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #4b367c;
+    background-color: #7257b1;
     border-radius: 25px;
 }
 
@@ -332,8 +374,66 @@ li a:hover {
     text-align: center;
 }
 
-.ListSream img {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
+#startWatch{
+    
+    font-family: 'Times New Roman', Times, Arial,sans-serif;
+    font-size: 20px;
+    outline: none;
+    display: inline-block;
+    line-height: 45px;
+    border-radius: 45px;
+    color: white;
+    background: #7257b1;
+    box-shadow: 0 8px 15px rgba(0,0,0,.1);
+    transition: .3s;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
 }
+
+#startWatch:hover{
+    
+    box-shadow: 0 15px 20px #7257b1;
+   
+    transform: translateY(-3px);
+}
+
+.StreamListElement{
+    /* border: 3px solid #4b367c; */
+    /* width: 300px;
+    margin: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    background-color: #2c3135;
+    padding: 10px;
+    box-sizing: border-box; */
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    flex: 1;
+    background: #24292e;
+    border-radius: 30px;
+    align-items: center;
+}
+
+
+.StreamListElement img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #a27aff;
+    margin-right: 10px;
+}
+
+.menu-stream-list{
+    border: 3px solid #4b367c;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu-stream-list span{
+    font-size: 24px;
+}
+
