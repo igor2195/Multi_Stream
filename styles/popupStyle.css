@@ -17,6 +17,14 @@ body{
     width: 30%;
 }
 
+.ListSream{
+    flex-direction: column;
+    justify-content: unset;
+    padding: 28px;
+    box-sizing: border-box;
+}
+
+
 
 
 .wrapper{
@@ -322,4 +330,10 @@ li a:hover {
 #notValidUserNameMessage {
     color: red;
     text-align: center;
+}
+
+.ListSream img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
 }

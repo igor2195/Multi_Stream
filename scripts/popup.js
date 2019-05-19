@@ -1,8 +1,9 @@
-var searchingStreamsUrl = "https://api.twitch.tv/kraken/search/streams";
+// var searchingStreamsUrl = "https://api.twitch.tv/kraken/search/streams";
 var twitchPlayerUrl = "https://player.twitch.tv/?channel=";
 var topGamesListUrl = "https://api.twitch.tv/kraken/games/top";
 var topStreamsListUr = "https://api.twitch.tv/kraken/streams";
 var StreamChannelList = [];
+var dataStreams;
 
 var clientId = "w3fm9hnnceiod76zcsfbje4hy4mfxn";
 var acceptHeader = "application/vnd.twitchtv.v5+json";
@@ -109,7 +110,8 @@ $(document).ready(function(){
             complete: function(){
                 $('#loadingPopularStreamsImg').hide();
             },
-            success: function(data){                
+            success: function(data){
+                dataStreams = data;                
                 data.streams.forEach(function(element){
                     addStreamToStreamsList(element.channel.logo, element.preview.medium, element.channel.status, element.channel.name, element.viewers, element.game, containerSelector)
                 } ,this);
@@ -176,11 +178,18 @@ $(document).ready(function(){
 
     $('#streamsList, #popularStreamsList, #followingStreamsList').on('click', '.streamPreview', function(event){
         var channelName = $('b:first',$(this).parent()).text();
-        // window.open(twitchPlayerUrl + channelName, "stream","width=660,height=400");
-        $('.ListSream').append(`<li>asd</li>`);
+        var src;
         var url = twitchPlayerUrl + channelName;
-        while(StreamChannelList.includes(url)===false){
+
+        dataStreams.streams.map(stream => {  
+            if (stream.channel.name === channelName) { 
+                src = stream.channel.logo; 
+            } 
+        });
+        
+        while(StreamChannelList.includes(url) === false){
             StreamChannelList.push(url);
+            $('.ListSream').append(`<li><img src="${src}"></li>`);
         };
         console.log(StreamChannelList);
                
@@ -233,7 +242,8 @@ $(document).ready(function(){
             complete: function(){
                 $('#loadingStreamsImg').hide();
             },
-            success: function(data){                
+            success: function(data){ 
+                dataStreams = data;               
                 data.streams.forEach(function(element){
                     addStreamToStreamsList(element.channel.logo, element.preview.medium, element.channel.status, element.channel.name, element.viewers, element.game, containerSelector)
                 } ,this);
