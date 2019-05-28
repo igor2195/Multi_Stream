@@ -1,4 +1,3 @@
-// var searchingStreamsUrl = "https://api.twitch.tv/kraken/search/streams";
 var twitchPlayerUrl = "https://player.twitch.tv/?channel=";
 var topGamesListUrl = "https://api.twitch.tv/kraken/games/top";
 var topStreamsListUr = "https://api.twitch.tv/kraken/streams";
@@ -27,11 +26,7 @@ var menuContainerDictionary = {
         containerToShow: '#popularStreamsSection',
         containerToHide: '#gameStreamsSection, #right-content'
     }
-    // following: {
-    //     menu: '#following',
-    //     containerToShow: '#followingStreamsSection',
-    //     containerToHide: '#followingStreamsSection'
-    // }
+    
 };
 
 function showConteiner(name){
@@ -161,11 +156,7 @@ $(document).ready(function(){
         // $('#startWatch').hide();
     });
 
-    // $('#following').click(function(){
-    //     showConteiner('following');
-    //     removeElementsInList('#followingStreamsList .gameInList');
-    //     showFollowingStreams('#followingStreamsList');
-    // });
+    
     
 
     // переход на экран всех стимов выбраной игры по клику на изображение
